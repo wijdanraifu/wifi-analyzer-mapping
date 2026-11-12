@@ -1,0 +1,293 @@
+{
+  "security_rules": [
+    {
+      "rule_id": "ENC_OPEN",
+      "parameter": "Enkripsi Router",
+      "condition": "Open / Tanpa Password",
+      "penalty_points": 45,
+      "risk_description": "Jaringan terbuka tanpa enkripsi; rentan terhadap penyadapan paket data (sniffing) di satu jaringan."
+    },
+    {
+      "rule_id": "ENC_WPA2",
+      "parameter": "Enkripsi Router",
+      "condition": "WPA2-PSK / WPA3",
+      "penalty_points": 0,
+      "risk_description": "Enkripsi titik akses standar sudah aktif."
+    },
+    {
+      "rule_id": "DNS_UNENCRYPTED",
+      "parameter": "Jalur DNS",
+      "condition": "Tidak Terenkripsi (Tanpa DoH)",
+      "penalty_points": 38,
+      "risk_description": "Jalur DNS tidak terenkripsi; berisiko terkena DNS Spoofing / Hijacking."
+    },
+    {
+      "rule_id": "TLS_INVALID",
+      "parameter": "Sertifikat HTTPS/TLS",
+      "condition": "Invalid / Self-Signed / Captive Portal Interception",
+      "penalty_points": 30,
+      "risk_description": "Sertifikat keamanan tidak valid; potensi serangan Man-in-the-Middle (MitM)."
+    }
+  ],
+  "locations_master": [
+    {
+      "location_id": "LOC-001",
+      "name": "Kopi Lembah UGM",
+      "area": "Sleman, DIY (Jl. Kaliurang)",
+      "ssid": "KopiLembah_FreeWiFi",
+      "isp": "Biznet",
+      "latitude": -7.76542,
+      "longitude": 110.37891,
+      "initial_scan": {
+        "download_mbps": 48.5,
+        "upload_mbps": 32.1,
+        "ping_ms": 14.0,
+        "jitter_ms": 3.0,
+        "is_throttled": true,
+        "video_mbps": 4.2,
+        "score": 62,
+        "category": "Rawan",
+        "findings": [
+          "Enkripsi Router: WPA2-PSK",
+          "Jalur DNS: Tidak Terenkripsi",
+          "Risiko: DNS Spoofing / Sniffing"
+        ],
+        "summary": "Wi-Fi di Kopi Lembah UGM sangat stabil untuk Zoom Meeting dan mengerjakan tugas kuliah (Ping 14ms). Namun, pengelola membatasi kecepatan streaming video hingga 4.2 Mbps. Peringatan Keamanan: Jalur DNS belum terenkripsi; hindari membuka aplikasi Mobile Banking atau aktifkan fitur Private DNS (1.1.1.1) di perangkat Anda.",
+        "suitable_for": [
+          "Rapat Online",
+          "Coding/Kerja"
+        ]
+      }
+    },
+    {
+      "location_id": "LOC-002",
+      "name": "Perpus Pusat UGM",
+      "area": "Bulaksumur, UGM",
+      "ssid": "UGM-Hotspot",
+      "isp": "UGM Net",
+      "latitude": -7.76951,
+      "longitude": 110.37825,
+      "initial_scan": {
+        "download_mbps": 85.0,
+        "upload_mbps": 68.4,
+        "ping_ms": 8.0,
+        "jitter_ms": 2.0,
+        "is_throttled": false,
+        "video_mbps": 82.5,
+        "score": 92,
+        "category": "Aman",
+        "findings": [
+          "Enkripsi Router: WPA2-Enterprise",
+          "Jalur DNS: Terenkripsi (DoH Aktif)",
+          "Sertifikat TLS Valid"
+        ],
+        "summary": "Koneksi sangat cepat, jujur tanpa pembatasan trafik, dan memiliki enkripsi tingkat universitas. Sangat aman digunakan untuk semua aktivitas mulai dari rapat daring, streaming 4K, hingga transaksi perbankan.",
+        "suitable_for": [
+          "Rapat Online",
+          "Coding/Kerja",
+          "Streaming 4K",
+          "Transaksi Perbankan"
+        ]
+      }
+    },
+    {
+      "location_id": "LOC-003",
+      "name": "Eduatoria Co-Work",
+      "area": "Jl. Kaliurang, Sleman",
+      "ssid": "Eduatoria_Member_5G",
+      "isp": "Biznet Dedicated",
+      "latitude": -7.76385,
+      "longitude": 110.38210,
+      "initial_scan": {
+        "download_mbps": 65.0,
+        "upload_mbps": 50.2,
+        "ping_ms": 11.0,
+        "jitter_ms": 2.5,
+        "is_throttled": false,
+        "video_mbps": 60.8,
+        "score": 88,
+        "category": "Aman",
+        "findings": [
+          "Enkripsi Router: WPA2-PSK",
+          "Jalur DNS: Terenkripsi (DoH Aktif)",
+          "Isolasi Klien Aktif"
+        ],
+        "summary": "Jaringan co-working space ini sangat kencang dan bebas dari pembatasan bandwidth video. Konfigurasi keamanan DNS sudah terenkripsi sehingga aman untuk produktivitas kerja maupun transaksi finansial.",
+        "suitable_for": [
+          "Rapat Online",
+          "Coding/Kerja",
+          "Streaming 4K",
+          "Transaksi Perbankan"
+        ]
+      }
+    },
+    {
+      "location_id": "LOC-004",
+      "name": "Warkop 24 Jam (Warkop X)",
+      "area": "Jl. Colombo (Area Kampus UGM)",
+      "ssid": "WarkopX_Gratis",
+      "isp": "IndiHome",
+      "latitude": -7.77680,
+      "longitude": 110.37650,
+      "initial_scan": {
+        "download_mbps": 12.0,
+        "upload_mbps": 4.5,
+        "ping_ms": 48.0,
+        "jitter_ms": 19.0,
+        "is_throttled": true,
+        "video_mbps": 2.1,
+        "score": 35,
+        "category": "Bahaya",
+        "findings": [
+          "Enkripsi Router: Open WiFi (Tanpa Password)",
+          "Jalur DNS: Tidak Terenkripsi",
+          "Risiko Tinggi: Packet Sniffing & ARP Spoofing"
+        ],
+        "summary": "Koneksi lambat dan menggunakan Open Wi-Fi tanpa kata sandi. Sangat berbahaya untuk memasukkan password penting atau membuka Mobile Banking karena lalu lintas data mudah disadap pengguna lain.",
+        "suitable_for": []
+      }
+    },
+    {
+      "location_id": "LOC-005",
+      "name": "Bento Kopi Pogung",
+      "area": "Pogung Baru, Sleman",
+      "ssid": "BentoKopi_Free",
+      "isp": "MyRepublic",
+      "latitude": -7.76012,
+      "longitude": 110.37340,
+      "initial_scan": {
+        "download_mbps": 34.2,
+        "upload_mbps": 20.5,
+        "ping_ms": 18.0,
+        "jitter_ms": 4.5,
+        "is_throttled": true,
+        "video_mbps": 5.0,
+        "score": 60,
+        "category": "Rawan",
+        "findings": [
+          "Enkripsi Router: WPA2-PSK",
+          "Jalur DNS: Tidak Terenkripsi"
+        ],
+        "summary": "Cukup lancar untuk mengerjakan tugas dan rapat daring, namun akses streaming video dibatasi hingga 5 Mbps. Gunakan VPN atau Private DNS sebelum mengakses layanan sensitif.",
+        "suitable_for": [
+          "Rapat Online",
+          "Coding/Kerja"
+        ]
+      }
+    },
+    {
+      "location_id": "LOC-006",
+      "name": "Gadjah Mada Digital Lounge (GMDL)",
+      "area": "Kampus UGM, Sleman",
+      "ssid": "GMDL_Coworking",
+      "isp": "Telkom Astinet",
+      "latitude": -7.77120,
+      "longitude": 110.37750,
+      "initial_scan": {
+        "download_mbps": 78.4,
+        "upload_mbps": 70.1,
+        "ping_ms": 9.0,
+        "jitter_ms": 1.8,
+        "is_throttled": false,
+        "video_mbps": 75.0,
+        "score": 90,
+        "category": "Aman",
+        "findings": [
+          "Enkripsi Router: WPA2-PSK",
+          "Jalur DNS: Terenkripsi (DoH Aktif)"
+        ],
+        "summary": "Kualitas jaringan sangat prima tanpa throttling dan memiliki proteksi DNS yang baik. Sangat direkomendasikan untuk segala kebutuhan mulai dari coding hingga konferensi video resolusi tinggi.",
+        "suitable_for": [
+          "Rapat Online",
+          "Coding/Kerja",
+          "Streaming 4K",
+          "Transaksi Perbankan"
+        ]
+      }
+    },
+    {
+      "location_id": "LOC-007",
+      "name": "Estuary Cafe",
+      "area": "Mlati, Sleman",
+      "ssid": "Estuary_Space",
+      "isp": "Biznet",
+      "latitude": -7.75890,
+      "longitude": 110.36980,
+      "initial_scan": {
+        "download_mbps": 42.0,
+        "upload_mbps": 28.0,
+        "ping_ms": 15.0,
+        "jitter_ms": 3.2,
+        "is_throttled": false,
+        "video_mbps": 39.5,
+        "score": 68,
+        "category": "Rawan",
+        "findings": [
+          "Enkripsi Router: WPA2-PSK",
+          "Jalur DNS: Tidak Terenkripsi"
+        ],
+        "summary": "Kecepatan internet stabil dan tidak membatasi streaming video. Namun jalur DNS masih standar sehingga disarankan mengaktifkan DNS-over-HTTPS sebelum bertransaksi perbankan.",
+        "suitable_for": [
+          "Rapat Online",
+          "Coding/Kerja",
+          "Streaming 4K"
+        ]
+      }
+    },
+    {
+      "location_id": "LOC-008",
+      "name": "Burjo & Warmindo Blimbingsari",
+      "area": "Blimbingsari, Depok, Sleman",
+      "ssid": "Warmindo_WiFi",
+      "isp": "IndiHome",
+      "latitude": -7.77450,
+      "longitude": 110.37410,
+      "initial_scan": {
+        "download_mbps": 15.5,
+        "upload_mbps": 6.2,
+        "ping_ms": 38.0,
+        "jitter_ms": 14.2,
+        "is_throttled": true,
+        "video_mbps": 3.0,
+        "score": 40,
+        "category": "Bahaya",
+        "findings": [
+          "Enkripsi Router: Open WiFi",
+          "Jalur DNS: Tidak Terenkripsi"
+        ],
+        "summary": "Jaringan terbuka dan mengalami pembatasan trafik video yang cukup berat. Hanya gunakan untuk browsing ringan dan hindari login ke akun penting.",
+        "suitable_for": []
+      }
+    },
+    {
+      "location_id": "LOC-009",
+      "name": "Zomia Co-Working Space",
+      "area": "Karanggayam, Sleman",
+      "ssid": "Zomia_FastNet",
+      "isp": "CitraNet",
+      "latitude": -7.76610,
+      "longitude": 110.38450,
+      "initial_scan": {
+        "download_mbps": 56.0,
+        "upload_mbps": 45.0,
+        "ping_ms": 12.0,
+        "jitter_ms": 2.1,
+        "is_throttled": false,
+        "video_mbps": 54.2,
+        "score": 85,
+        "category": "Aman",
+        "findings": [
+          "Enkripsi Router: WPA2-PSK",
+          "Jalur DNS: Terenkripsi"
+        ],
+        "summary": "Koneksi cepat, jujur, dan aman. Cocok untuk mahasiswa maupun pekerja lepas yang membutuhkan koneksi stabil seharian.",
+        "suitable_for": [
+          "Rapat Online",
+          "Coding/Kerja",
+          "Streaming 4K",
+          "Transaksi Perbankan"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Streamlit secrets (API keys) - jangan pernah di-commit
+.streamlit/secrets.toml
+
+# Database lokal (dibuat otomatis dari data/seed_data.json)
+*.db
+*.db-journal
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
